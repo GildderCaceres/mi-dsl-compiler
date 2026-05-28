@@ -1,0 +1,6 @@
+com\compiladores\dsl\MiDSLBaseListener.class
+com\compiladores\dsl\MiDSLParser.class
+com\compiladores\dsl\App.class
+com\compiladores\dsl\MiDSLLexer.class
+com\compiladores\dsl\MiDSLParser$ProgramaContext.class
+com\compiladores\dsl\MiDSLListener.class

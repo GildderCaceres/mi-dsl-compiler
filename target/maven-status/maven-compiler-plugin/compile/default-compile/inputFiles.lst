@@ -1,0 +1,12 @@
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\App.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\generator\JsonGenerator.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\model\Accion.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\model\Maquina.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\model\Programa.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\model\Sensor.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\semantic\SemanticAnalyzer.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\utils\FileManager.java
+C:\Compiladores\mi-dsl-compiler\target\generated-sources\antlr4\com\compiladores\dsl\MiDSLBaseListener.java
+C:\Compiladores\mi-dsl-compiler\target\generated-sources\antlr4\com\compiladores\dsl\MiDSLLexer.java
+C:\Compiladores\mi-dsl-compiler\target\generated-sources\antlr4\com\compiladores\dsl\MiDSLListener.java
+C:\Compiladores\mi-dsl-compiler\target\generated-sources\antlr4\com\compiladores\dsl\MiDSLParser.java
