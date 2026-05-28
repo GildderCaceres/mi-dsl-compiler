@@ -30,13 +30,14 @@
                 <h2>Código DSL</h2>
 
                 <textarea id="codigo">
-
-maquina Banda1 iniciar;
+maquina Banda1;
 
 sensor temperatura = 120;
-
+                    
+iniciar Banda1;
+                    
 si temperatura > 100 entonces
-maquina Banda1 detener;
+detener Banda1;
 
                 </textarea>
 

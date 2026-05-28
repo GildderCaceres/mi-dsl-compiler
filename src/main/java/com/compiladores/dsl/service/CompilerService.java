@@ -1,6 +1,8 @@
 package com.compiladores.dsl.service;
 
-import com.compiladores.dsl.*;
+import com.compiladores.dsl.MiDSLLexer;
+import com.compiladores.dsl.MiDSLParser;
+import com.compiladores.dsl.error.CompilerErrorListener;
 import com.compiladores.dsl.generator.JsonGenerator;
 import com.compiladores.dsl.semantic.SemanticAnalyzer;
 import com.compiladores.dsl.utils.FileManager;
@@ -15,7 +17,6 @@ import java.util.List;
 public class CompilerService {
 
     public static void compilarDesdeArchivo(String rutaArchivo) throws Exception {
-
         String codigoFuente = Files.readString(
                 Paths.get(rutaArchivo)
         );
@@ -25,75 +26,61 @@ public class CompilerService {
 
     public static ResultadoCompilacion compilarDesdeTexto(String codigoFuente) {
 
-        ResultadoCompilacion resultado =
-                new ResultadoCompilacion();
+        ResultadoCompilacion resultado = new ResultadoCompilacion();
 
         try {
-            CharStream input =
-                    CharStreams.fromString(codigoFuente);
+            CharStream input = CharStreams.fromString(codigoFuente);
 
-            MiDSLLexer lexer =
-                    new MiDSLLexer(input);
+            CompilerErrorListener errorListener = new CompilerErrorListener();
 
-            CommonTokenStream tokens =
-                    new CommonTokenStream(lexer);
+            MiDSLLexer lexer = new MiDSLLexer(input);
+            lexer.removeErrorListeners();
+            lexer.addErrorListener(errorListener);
 
-            MiDSLParser parser =
-                    new MiDSLParser(tokens);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-            ParseTree tree =
-                    parser.programa();
+            MiDSLParser parser = new MiDSLParser(tokens);
+            parser.removeErrorListeners();
+            parser.addErrorListener(errorListener);
+
+            ParseTree tree = parser.programa();
 
             resultado.setArbolSintactico(
                     tree.toStringTree(parser)
             );
 
-            ParseTreeWalker walker =
-                    new ParseTreeWalker();
-
-            SemanticAnalyzer semanticAnalyzer =
-                    new SemanticAnalyzer();
-
-            walker.walk(
-                    semanticAnalyzer,
-                    tree
-            );
-
-            if (!semanticAnalyzer.getErrores().isEmpty()) {
-
+            if (errorListener.hayErrores()) {
                 resultado.setExitoso(false);
-                resultado.setErrores(
-                        semanticAnalyzer.getErrores()
-                );
-
+                resultado.setErrores(errorListener.getErrores());
                 return resultado;
             }
 
-            JsonGenerator generator =
-                    new JsonGenerator();
+            ParseTreeWalker walker = new ParseTreeWalker();
 
-            walker.walk(
-                    generator,
-                    tree
+            SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
+            walker.walk(semanticAnalyzer, tree);
+
+            if (!semanticAnalyzer.getErrores().isEmpty()) {
+                resultado.setExitoso(false);
+                resultado.setErrores(semanticAnalyzer.getErrores());
+                return resultado;
+            }
+
+            JsonGenerator generator = new JsonGenerator();
+            walker.walk(generator, tree);
+
+            String json = FileManager.convertirProgramaAJSON(
+                    generator.getPrograma()
             );
-
-            String json =
-                    FileManager.convertirProgramaAJSON(
-                            generator.getPrograma()
-                    );
 
             resultado.setExitoso(true);
             resultado.setJsonGenerado(json);
 
         } catch (Exception e) {
-
             resultado.setExitoso(false);
             resultado.setErrores(
-                    List.of(
-                            "ERROR GENERAL: " + e.getMessage()
-                    )
+                    List.of("ERROR GENERAL: " + e.getMessage())
             );
-
         }
 
         return resultado;

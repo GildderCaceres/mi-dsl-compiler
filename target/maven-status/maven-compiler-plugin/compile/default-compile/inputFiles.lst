@@ -1,5 +1,6 @@
 C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\App.java
 C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\controller\CompilerController.java
+C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\error\CompilerErrorListener.java
 C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\generator\JsonGenerator.java
 C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\model\Accion.java
 C:\Compiladores\mi-dsl-compiler\src\main\java\com\compiladores\dsl\model\Condicion.java
