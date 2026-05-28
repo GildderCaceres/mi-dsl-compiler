@@ -1,6 +1,15 @@
 com\compiladores\dsl\MiDSLBaseListener.class
+com\compiladores\dsl\MiDSL.interp
+com\compiladores\dsl\MiDSLParser$SensorDeclaracionContext.class
+com\compiladores\dsl\MiDSLLexer.interp
+MiDSL.tokens
+com\compiladores\dsl\MiDSLParser$AccionContext.class
+com\compiladores\dsl\MiDSLParser$MaquinaDeclaracionContext.class
 com\compiladores\dsl\MiDSLParser.class
-com\compiladores\dsl\App.class
+com\compiladores\dsl\MiDSLParser$AccionMaquinaContext.class
 com\compiladores\dsl\MiDSLLexer.class
+com\compiladores\dsl\MiDSLParser$InstruccionContext.class
 com\compiladores\dsl\MiDSLParser$ProgramaContext.class
+MiDSLLexer.tokens
+com\compiladores\dsl\MiDSLParser$CondicionContext.class
 com\compiladores\dsl\MiDSLListener.class

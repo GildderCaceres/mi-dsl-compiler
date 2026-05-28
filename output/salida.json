@@ -1,8 +1,28 @@
 {
   "instrucciones": [
-    "Maquina",
-    "Sensor",
-    "Accion",
-    "Accion"
+{
+"tipo": "maquina",
+"nombre": "Banda1"
+},
+{
+"tipo": "sensor",
+"nombre": "temperatura",
+"valor": 120
+},
+{
+"tipo": "accion",
+"accion": "iniciar",
+"maquina": "Banda1"
+},
+{
+"tipo": "condicion",
+"sensor": "temperatura",
+"operador": ">",
+"valor": 100,
+"entonces": {
+"accion": "detener",
+"maquina": "Banda1"
+}
+}
   ]
 }

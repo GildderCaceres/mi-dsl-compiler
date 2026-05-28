@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi DSL Compiler</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Compilador DSL Industrial</h1>
+            <p>
+                ANTLR + Java + Spring Boot
+            </p>
+        </div>
+
+        <div class="editor-container">
+
+            <div class="panel">
+
+                <h2>Código DSL</h2>
+
+                <textarea id="codigo">
+
+maquina Banda1 iniciar;
+
+sensor temperatura = 120;
+
+si temperatura > 100 entonces
+maquina Banda1 detener;
+
+                </textarea>
+
+                <div class="buttons">
+
+                    <button onclick="compilar()">
+                        Compilar
+                    </button>
+
+                    <button onclick="limpiar()">
+                        Limpiar
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="panel">
+
+                <h2>Resultado JSON</h2>
+
+                <pre id="resultado"></pre>
+
+            </div>
+
+        </div>
+
+        <div class="panel errores-panel">
+
+            <h2>Mensajes</h2>
+
+            <div id="mensajes"></div>
+
+        </div>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
